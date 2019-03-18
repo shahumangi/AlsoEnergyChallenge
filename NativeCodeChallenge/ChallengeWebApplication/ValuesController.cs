@@ -1,0 +1,26 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net;
+using System.Net.Http;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
+
+// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+
+namespace ChallengeWebApplication
+{
+    [Route("api/[controller]")]
+    public class ValuesController : Controller
+    {
+        // GET: api/<controller>
+        [HttpGet("{val?}")]
+        public DateTime Get(string val = null)
+        {
+            if (val == null)
+                return DateTime.Now;
+            else
+                throw new System.Web.Http.HttpResponseException(HttpStatusCode.InternalServerError);
+        }
+    }
+}
