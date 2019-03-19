@@ -21,6 +21,7 @@ namespace DataAccess
             }
             else
                 _alsoEnergyContext.Server_Response_Logs.Add(server_Response_Log);
+            _alsoEnergyContext.SaveChanges();
         }
        
     }

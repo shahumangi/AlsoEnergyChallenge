@@ -72,7 +72,7 @@ namespace NativeCodeChallenge
             catch(WebException ex)
             {
                 if (ex.Response != null && ex.Response is HttpWebResponse)
-                    statusCode = ((HttpWebResponse)ex.Response).StatusCode;
+                    statusCode = ((HttpWebResponse)ex.Response).StatusCode; 
                 if (ex.Status == WebExceptionStatus.Timeout)
                     statusCode = HttpStatusCode.RequestTimeout;
             }
@@ -85,20 +85,25 @@ namespace NativeCodeChallenge
         public static void MakeAndLogRequest(string url, int timeOut)
         {
             string response;
+            DateTime startTime = DateTime.Now;
             var statusCode = MakeRequest(url, timeOut, out response);
+            DateTime endTime = DateTime.Now;
+            LogRequest(startTime, endTime, (int)statusCode,(short) (statusCode == HttpStatusCode.OK ? 1 : (statusCode == HttpStatusCode.RequestTimeout ? -999 : 2)),response);
         }
 
-        static void LogRequest(DateTime startTime, DateTime endTime, int statusCode, short errorCode,string responseText)
+        static void LogRequest(DateTime startTime, DateTime endTime, int statusCode, short status,string responseText)
         {
-            var connection = new SqlConnection(connectionString);
-            connection.Open();
-
-            var options = new DbContextOptionsBuilder<AlsoEnergyContext>().UseSqlServer(connection).Options;
-
-            using (var context = new AlsoEnergyContext(options))
+            using (var connection = new SqlConnection(connectionString))
             {
-                IServerResponseLogRepository serverResponseLogRepository = new ServerResponseLogRepository(new AlsoEnergyContext(options));
-                serverResponseLogRepository.Save(new Server_Response_Log() { StartTime=startTime, EndTime = endTime, ErrorCode = errorCode, StatusCode = statusCode, ResponseText = responseText });
+                connection.Open();
+
+                var options = new DbContextOptionsBuilder<AlsoEnergyContext>().UseSqlServer(connection).Options;
+
+                using (var context = new AlsoEnergyContext(options))
+                {
+                    IServerResponseLogRepository serverResponseLogRepository = new ServerResponseLogRepository(new AlsoEnergyContext(options));
+                    serverResponseLogRepository.Save(new Server_Response_Log() { StartTime = startTime, EndTime = endTime, Status = status, HttpStatusCode = statusCode, ResponseText = responseText });
+                }
             }
         }
 

@@ -50,5 +50,24 @@ namespace Tests
             var statusCode = Program.MakeRequest("http://localhost:24869/api/Values/abc", 5000, out response);
             Assert.AreEqual(statusCode, HttpStatusCode.InternalServerError);
         }
+
+        [Test]
+        public void TestAndLogRequest1()
+        {
+            Program.MakeAndLogRequest("http://google.com", 5000);
+        }
+
+        [Test]
+        public void TestAndLogRequest2()
+        {
+            Program.MakeAndLogRequest("http://localhost:24869/api/Values/abc", 5000);
+        }
+
+        [Test]
+        public void TestAndLogRequest3()
+        {
+            Program.MakeAndLogRequest("http://google.com", 1);
+        }
+
     }
 }
