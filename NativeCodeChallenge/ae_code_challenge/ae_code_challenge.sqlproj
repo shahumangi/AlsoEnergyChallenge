@@ -65,4 +65,7 @@
   <ItemGroup>
     <RefactorLog Include="ae_code_challenge.refactorlog" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="server_response_log_ID_StartTime__ResponseText_HttpStatusCode.sql" />
+  </ItemGroup>
 </Project>
