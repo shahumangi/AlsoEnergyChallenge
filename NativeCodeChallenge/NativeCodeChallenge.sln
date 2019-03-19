@@ -15,6 +15,8 @@ Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "ae_code_challenge", "ae_cod
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccess", "DataAccess1\DataAccess.csproj", "{1E3CC4E1-C609-4EAC-8FBC-8C386FD84CAC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccessTest", "DataAccessTest\DataAccessTest.csproj", "{013C5721-0722-4CB7-A7E1-F824113F359E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -47,6 +49,10 @@ Global
 		{1E3CC4E1-C609-4EAC-8FBC-8C386FD84CAC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1E3CC4E1-C609-4EAC-8FBC-8C386FD84CAC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1E3CC4E1-C609-4EAC-8FBC-8C386FD84CAC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{013C5721-0722-4CB7-A7E1-F824113F359E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{013C5721-0722-4CB7-A7E1-F824113F359E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{013C5721-0722-4CB7-A7E1-F824113F359E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{013C5721-0722-4CB7-A7E1-F824113F359E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
