@@ -32,13 +32,19 @@ namespace DataAccess
             var returnList = list.ToList();
             return returnList;
         }
-       
+
+        public Dictionary<int,IEnumerable<KeyValuePair<int,int>>> GetErrorCodeAndCount(DateTime dateTime)
+        {
+           var list =  _alsoEnergyContext.Server_Response_Logs.Where( l => l.StartTime.Date == dateTime.Date).GroupBy(l =>  l.StartTime.Hour ).Select(group => new KeyValuePair<int,IEnumerable<KeyValuePair<int,int>>>(group.Key,group.GroupBy(log => log.HttpStatusCode).Select(group2 => new KeyValuePair<int, int>(group2.Key, group2.Count()))));
+           return list.ToDictionary(kv => kv.Key, kv => kv.Value);
+        }
     }
 
     public interface IServerResponseLogRepository
     {
         void Save(Server_Response_Log server_Response_Log);
         List<dynamic> GetFiveRecentServerLogsInTimeSpan(DateTime startDateTime, DateTime endDateTime);
+        Dictionary<int, IEnumerable<KeyValuePair<int, int>>> GetErrorCodeAndCount(DateTime dateTime);
 
     }
 }

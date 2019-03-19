@@ -31,5 +31,23 @@ namespace Tests
             }
 
         }
+
+        [Test]
+        public void TestGetErroCodeAndCount()
+        {
+            using (var connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+
+                var options = new DbContextOptionsBuilder<AlsoEnergyContext>().UseSqlServer(connection).Options;
+
+                using (var context = new AlsoEnergyContext(options))
+                {
+                    IServerResponseLogRepository serverResponseLogRepository = new ServerResponseLogRepository(new AlsoEnergyContext(options));
+                    var dictionary =serverResponseLogRepository.GetErrorCodeAndCount(DateTime.Now.AddHours(-3));
+                }
+            }
+
+        }
     }
 }
