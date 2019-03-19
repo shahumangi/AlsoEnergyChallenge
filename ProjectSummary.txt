@@ -1,0 +1,24 @@
+There are two folders - ParkingGarage and NativeCodeChallenge. Both folders contain respective solutions
+NativeCodeChallenge -
+DataAccess1 Folder - DataAccess project. Here EntityFramework is used as I personally prefer ORM than ADO .net
+DataAccessTest - Tests for Repository
+NativeCodeChallenge - This is console application doing three things
+	-Sum of even numbers
+	-Sending http request and Logging request in db
+	-Printing array of numbers  in two threads
+	-Main method does it. Also there is unit test project
+NativeCodeChallengeTest - unit tests for NativeCodeChallenge
+
+ae_code_challenge Folder - It is db project which contains script for table, stored procedure and index
+
+ChallengeWebApplication Folder- This project started with Empty web project.
+Rest API Get can be accessed by localhost:2610/api/Values which gives current date
+localhost:2610/api/Values/get/abc gives timeout
+
+The UI which shows no of requests in each status per hour (for just today) can be accessed by localhost:2610/home/
+Controller name is HomeController.
+The UI is very basic as this is prototype
+
+NUnitTestProject2 Folder- unit tests for ChallengeWebApplication 
+
+WishList - here I haven't used Dependency Injection or Any Mocking framework (I personally like FakeItEasy) for unit tests because of time constraint.
