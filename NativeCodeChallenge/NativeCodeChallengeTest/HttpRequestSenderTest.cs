@@ -33,6 +33,13 @@ namespace NativeCodeChallengeTest
             Assert.AreEqual(statusCode, HttpStatusCode.InternalServerError);
         }
 
-
+        [Test]
+        public void TestResponseIsNotNull()
+        {
+            string response;
+            var statusCode = new HttpRequestSender().MakeRequest("http://localhost:24869/api/Values", 5000, out response);
+            Assert.AreEqual(statusCode, HttpStatusCode.OK);
+            Assert.IsNotNull(response);
+        }
     }
 }

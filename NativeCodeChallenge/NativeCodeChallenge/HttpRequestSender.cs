@@ -26,6 +26,7 @@ namespace NativeCodeChallenge
                 {
                     statusCode = response.StatusCode;
                     if (statusCode != HttpStatusCode.OK)
+                        return statusCode;
                         // Get the stream containing content returned by the server.  
                         using (Stream dataStream = response.GetResponseStream())
                         {
