@@ -45,15 +45,13 @@ namespace ParkingGarage
         {
             if (IsParked) //If vehicle is parked you can not park again
                 return;
-            if (!CanFitInSlot(slot))
-                return;
             slot.IsEmpty = false;
             Slot = slot;
             IsParked = true;
             DidPark = true;
         }
 
-        public void VacateSlot(Slot slot)
+        public virtual void VacateSlot(Slot slot)
         {
             IsParked = false;
             slot.IsEmpty = false;

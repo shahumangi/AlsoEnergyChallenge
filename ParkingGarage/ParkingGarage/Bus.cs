@@ -24,5 +24,19 @@ namespace ParkingGarage
             else
                 return false;
         }
+
+        public override void Park(Slot slot)
+        {
+            var slots = slot.Level.Slots.Where(s => s.Row == slot.Row && s.Number > slot.Number && s.Number < slot.Number + 5);
+            foreach (var s in slots)
+                base.Park(s);
+        }
+
+        public override void VacateSlot(Slot slot)
+        {
+            var slots = slot.Level.Slots.Where(s => s.Row == slot.Row && s.Number > slot.Number && s.Number < slot.Number + 5);
+            foreach (var s in slots)
+                base.VacateSlot(s);
+        }
     }
 }
